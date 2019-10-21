@@ -94,6 +94,7 @@ export default Vue.extend({
 .watch-demo {
   margin-top: 20px;
   padding: 0 20px;
+  border: 1px solid red;
 }
 input {
   width: 150px;

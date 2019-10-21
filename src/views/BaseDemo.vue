@@ -10,15 +10,20 @@
     >
     </watch-demo>
     <span @click="changeValue">改变数值</span>
+    <!-- computed demo -->
+    <computed-demo :price="price" :obj="obj" :base="base"></computed-demo>
+    <span @click="changeBase">改变base</span>
   </div>
 </template>
 
 <script lang="ts">
 import WatchDemo from '@/components/baseDemo/WatchDemo.vue';
+import ComputedDemo from '@/components/baseDemo/ComputedDemo.vue';
 export default {
   name: 'home',
   components: {
-    WatchDemo
+    WatchDemo,
+    ComputedDemo
   },
   data() {
     return {
@@ -30,7 +35,13 @@ export default {
         // { id: 2, name: '李四', age: 26 },
         // { id: 3, name: '王五', age: 100 },
         // { id: 4, name: '陈留', age: 52 }
-      ] as any
+      ] as any,
+      price: 456,
+      obj: {
+        firstName: 'singhai',
+        lastName: 'wang'
+      } as any,
+      base: [{ info: 'text' }]
     };
   },
   watch: {
@@ -69,6 +80,9 @@ export default {
       (this as any).title = '123';
       (this as any).titleImmediately = '456';
       (this as any).persons = [{ id: 8, name: '李白', age: 100 }, { id: 9, name: '王五', age: 52 }];
+    },
+    changeBase() {
+      (this as any).base[0].info = '7777';
     }
   }
 };
