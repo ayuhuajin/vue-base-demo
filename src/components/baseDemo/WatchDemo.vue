@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
+  <div class="watch-demo">
+    454545
   </div>
 </template>
 
@@ -8,12 +8,9 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  name: 'app'
+  name: 'WatchDemo',
+  props: {
+    msg: String
+  }
 });
 </script>
-
-<style lang="scss">
-#app {
-  color: #333;
-}
-</style>
