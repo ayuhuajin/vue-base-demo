@@ -14,6 +14,11 @@ const routes = [
     path: '/baseList',
     name: 'ListDemo',
     component: () => import('../views/ListDemo.vue')
+  },
+  {
+    path: '/baseProp',
+    name: 'PropDemo',
+    component: () => import('../views/PropDemo.vue')
   }
 ];
 
