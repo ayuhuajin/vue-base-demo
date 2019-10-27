@@ -24,11 +24,11 @@ export default {
   mounted() {
     (this as any).count = (this as any).count + 5;
     console.log((this as any).counter);
-    console.log(this.obj);
+    console.log((this as any).obj);
 
-    this.items.name = 'wsinghai';
-    console.log(this.items);
-    console.log(this.obj);
+    (this as any).items.name = 'wsinghai';
+    console.log((this as any).items);
+    console.log((this as any).obj);
   },
   methods: {}
 };

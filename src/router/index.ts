@@ -19,6 +19,11 @@ const routes = [
     path: '/baseProp',
     name: 'PropDemo',
     component: () => import('../views/PropDemo.vue')
+  },
+  {
+    path: '/vueCycle',
+    name: 'VueCycle',
+    component: () => import('../views/VueCycle.vue')
   }
 ];
 
