@@ -41,7 +41,8 @@ export default Vue.extend({
           id: 2,
           book: '平凡的世界'
         }
-      ]
+      ],
+      team: '集体'
     };
   },
   watch: {
@@ -65,10 +66,12 @@ export default Vue.extend({
     // get,set
     grade: {
       get() {
-        return '年级1';
+        console.log('get', (this as any).team);
+        return (this as any).team;
       },
       set(val) {
-        console.log(val);
+        console.log('set', val);
+        (this as any).team = val;
       }
     },
     info() {
