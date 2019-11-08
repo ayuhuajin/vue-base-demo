@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>callBind</title>
+  </head>
+  <body>
+    
+    <div id="kk">123</div>
+    <!-- built files will be auto injected -->
+    <script>
+      Array.prototype.push = function(...items) {
+        console.log("this",this)
+        let O = Object(this);
+        console.log(O);
+
+        let len = this.length >>> 0;
+        let argCount = items.length >>> 0;
+        // 2 ** 53 - 1 为JS能表示的最大正整数
+        if (len + argCount > 2 ** 53 - 1) {
+          throw new TypeError('The number of array is over the max value restricted!');
+        }
+        for (let i = 0; i < argCount; i++) {
+          O[len + i] = items[i];
+        }
+        let newLength = len + argCount;
+        O.length = newLength;
+        return newLength;
+      };
+      let a = [1];
+      a.push(456);
+    </script>
+    <script>
+     // 函数f虽然是在obj.fn内部定义的，但是它仍然是一个普通的函数，this仍然指向window。
+      var obj = {
+        x:10,
+        fn:function() {
+          function f() {
+            console.log(this); //window 
+            console.log(this.x); // undefind
+          } 
+          f();
+        }
+      }
+      obj.fn();
+
+      // obj2
+      var obj2 = {
+        a : {
+
+          b : 2,
+          c : function () {
+              console.log(this.b);
+          }
+        }
+      }
+      obj2.a.c(); // 2
+
+
+      var obj3 = {
+        f: function () {
+          console.log(this);
+          var f1 = function () {
+            //console.log(this);
+          }();
+        }
+      }
+
+      obj3.f();
+      //{f:func}
+      //winodw
+      // arr.map((item)=>{
+      //   console.log(item)
+      // })
+    </script>
+    <script>
+      Array.prototype.map = function(callbackFn, thisArg) {
+        // 处理数组类型异常
+        if (this === null || this === undefined) {
+          throw new TypeError("Cannot read property 'map' of null or undefined");
+        }
+        // 处理回调类型异常
+        if (Object.prototype.toString.call(callbackFn) != "[object Function]") {
+          throw new TypeError(callbackFn + ' is not a function')
+        }
+        // 草案中提到要先转换为对象
+        let O = Object(this);  // arr
+        let T = thisArg;   //
+
+        
+        let len = O.length >>> 0;
+        let A = new Array(len);
+        for(let k = 0; k < len; k++) {
+          // 还记得原型链那一节提到的 in 吗？in 表示在原型链查找
+          // 如果用 hasOwnProperty 是有问题的，它只能找私有属性
+          if (k in O) {
+            let kValue = O[k];
+            console.log(T, kValue, k, O)
+            // 依次传入this, 当前项，当前索引，整个数组
+            let mappedValue = callbackFn.call(T, kValue, k, O);
+            console.log(9999999,mappedValue)
+            A[k] = mappedValue;
+          }
+        }
+        console.log(A)
+        return A;
+      }
+      let arr = [{name:"11"},{name:'22'}]
+      arr.map((item)=>{
+       
+       return item
+      })
+
+    </script>
+  </body>
+</html>
