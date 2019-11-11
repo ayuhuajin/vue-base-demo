@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>继承--原型链</title>
+  </head>
+  <body>
+    <div id="kk">继承--原型链</div>
+    <script>
+      function Animal(name,age) {
+        this.name = name;
+        this.age = age;
+        this.speed = [1,2,3]
+      }
+      Animal.prototype.bark = function() {
+        console.log(this.name + '叫声')
+      }
+      function Dog(name,age,hair) {
+        Animal.call(this,name,age)
+        this.hair = hair
+      }
+      // Dog.prototype.desc = function() {
+      //   this.name + "是" +this.hair
+      // }
+      Dog.prototype = Object.create(Animal.prototype);
+      Dog.prototype.constructor = Dog;
+      let dog1 =  new Dog('狗狗',3,'长毛')
+      dog1.speed.push(4)
+      console.log(dog1,dog1.name,dog1.age)
+      let dog2 =  new Dog('猫咪',2,'短毛')
+      console.log(dog2,dog2.name,dog2.age)
+        
+    </script>
+  </body>
+</html>

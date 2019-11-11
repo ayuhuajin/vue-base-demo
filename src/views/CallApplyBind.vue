@@ -11,7 +11,7 @@ export default {
     return {};
   },
   mounted() {
-    this.myPush();
+    (this as any).myPush();
   },
   methods: {
     myPush() {
