@@ -13,12 +13,15 @@
     <!-- computed demo -->
     <computed-demo :price="price" :obj="obj" :base="base"></computed-demo>
     <span @click="changeBase">改变base</span>
+    <button @click="throttle">按钮</button>
   </div>
 </template>
 
 <script lang="ts">
 import WatchDemo from '@/components/baseDemo/WatchDemo.vue';
 import ComputedDemo from '@/components/baseDemo/ComputedDemo.vue';
+let timer: any, lastTime: any;
+
 export default {
   name: 'home',
   components: {
@@ -67,6 +70,15 @@ export default {
     }, 200);
   },
   methods: {
+    // 节流
+    throttle() {
+      if (!timer) {
+        timer = setTimeout(() => {
+          console.log('点击...');
+          timer = null;
+        }, 1000);
+      }
+    },
     // 修改标题
     changeTitle(title: string) {
       (this as any).title = title;
@@ -82,6 +94,7 @@ export default {
       (this as any).persons = [{ id: 8, name: '李白', age: 100 }, { id: 9, name: '王五', age: 52 }];
     },
     changeBase() {
+      console.log(22);
       (this as any).base[0].info = '7777';
     }
   }
