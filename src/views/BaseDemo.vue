@@ -9,6 +9,8 @@
       @changeImmediatelyTitle="changeImmediatelyTitle"
     >
     </watch-demo>
+    <i class="icon icon-icon_back"></i>
+    <i class="icon icon-marker-icon-2x-red"></i>
     <span @click="changeValue">改变数值</span>
     <!-- computed demo -->
     <computed-demo :price="price" :obj="obj" :base="base"></computed-demo>

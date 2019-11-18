@@ -29,6 +29,11 @@ const routes = [
     path: '/baseTest',
     name: 'BaseTest',
     component: () => import('../views/BaseTest.vue')
+  },
+  {
+    path: '/callBind',
+    name: 'callBind',
+    component: () => import('../views/CallApplyBind.vue')
   }
 ];
 

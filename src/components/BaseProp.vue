@@ -22,7 +22,7 @@ export default {
   },
   watch: {},
   mounted() {
-    (this as any).count = (this as any).count + 5;
+    this.count = this.count + 5;
     console.log((this as any).counter);
     console.log((this as any).obj);
 
