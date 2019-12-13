@@ -32,6 +32,8 @@ export default {
         controls: false,
         posterImage: true, //是否显示封面。
         muted: true, // 静音播放
+        pausePosterEnabled: true,
+        preload: 'auto',
         poster: { style: 'stretch', src: 'http://ylwzn.nxin.com/images/wave.png' },
         width: '200px', //视频的显示宽度，请尽量使用视频分辨率宽度
         height: '120px' //视频的显示高度，请尽量使用视频分辨率高度
