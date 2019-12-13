@@ -34,6 +34,11 @@ const routes = [
     path: '/callBind',
     name: 'callBind',
     component: () => import('../views/CallApplyBind.vue')
+  },
+  {
+    path: '/liveMonitor',
+    name: 'liveMonitor',
+    component: () => import('../views/LiveMonitor.vue')
   }
 ];
 
