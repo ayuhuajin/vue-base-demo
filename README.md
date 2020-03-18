@@ -1,6 +1,6 @@
 # vue-base-demo
 ```
-基础示例与Demo
+Vue 基础示例与Demo
 ```
 ## Project setup
 ```
